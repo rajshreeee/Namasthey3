@@ -7,10 +7,13 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:fitsSystemWindows="true"
-    > <!-- to ensure the contents of the drawer don’t overlay the status bar and other system windows. The DrawerLayout also uses fitsSystemWindows as a sign that it needs to inset its children (such as the main content view), but still draw the status bar background in that space as per the material design specs (which defaults to your theme’s colorPrimaryDark).  -->
+    >
+
+    <!-- to ensure the contents of the drawer don’t overlay the status bar and other system windows. The DrawerLayout also uses fitsSystemWindows as a sign that it needs to inset its children (such as the main content view), but still draw the status bar background in that space as per the material design specs (which defaults to your theme’s colorPrimaryDark).  -->
 
 
 <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+
     <RelativeLayout
         android:id="@+id/content_frame"
 
@@ -27,9 +30,45 @@ android:fitsSystemWindows="true"
             android:background="#9c64a6"
              />
 
-    </RelativeLayout>
+     <android.support.v4.view.ViewPager
+         android:id="@+id/vpPager"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>
 
-    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+
+     <android.support.design.widget.TabLayout
+         android:id="@+id/tabs"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentStart="true"
+         android:layout_below="@+id/toolbar"
+         app:tabGravity="fill"
+         app:tabMaxWidth="0dp"
+         app:tabMode="fixed">
+
+         <android.support.design.widget.TabItem
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="First" />
+
+         <android.support.design.widget.TabItem
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="Contact" />
+
+         <android.support.design.widget.TabItem
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="Third" />
+     </android.support.design.widget.TabLayout>
+
+
+
+
+
+ </RelativeLayout>
+
+ <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

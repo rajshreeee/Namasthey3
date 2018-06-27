@@ -15,7 +15,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class contactReview extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -26,7 +30,7 @@ public class contactReview extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String userId;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
+final String CurrentDate = DateFormat.getDateTimeInstance().format(new Date());
 
     profileinfofromdb uInfo = new profileinfofromdb();
     @Override
@@ -58,17 +62,15 @@ public class contactReview extends AppCompatActivity {
     private void showData(DataSnapshot dataSnapshot) {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
             uInfo.setName(ds.getValue(profileinfofromdb.class).getName()); //set the name
-            uInfo.setInterests(ds.getValue(profileinfofromdb.class).getInterests());
 
-            //display all the information
-            Log.d(TAG, "showData: name: " + uInfo.getName());
+
+
 
 
 
 
             ArrayList<String> array  = new ArrayList<>();
             array.add(uInfo.getName());
-            array.add(uInfo.getInterests());
 
 
 
@@ -78,9 +80,13 @@ public class contactReview extends AppCompatActivity {
 
         }
 
-        }
+    }
     public void DoneClick(View view){
-        myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("contacts").push().setValue(uInfo.getName());
+        Map FreindsMap = new HashMap();
+        FreindsMap.put("Friends/"+userId+"/"+uInfo.getName()+"/"+"/date",CurrentDate);
+        FreindsMap.put("Friends/"+userId+"/"+uInfo.getName()+"/"+"/name",uInfo.getName());
+database.getReference().updateChildren(FreindsMap);
+
 
     }
 
