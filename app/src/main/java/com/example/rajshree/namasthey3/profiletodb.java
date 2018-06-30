@@ -1,5 +1,7 @@
 package com.example.rajshree.namasthey3;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +32,13 @@ public class profiletodb extends AppCompatActivity {
 
         myRef.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("name").setValue(p_name.getText().toString().trim());
         myRef.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("phone_no").setValue(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+
+        SharedPreferences sharedPref = getSharedPreferences("mypref", Context.MODE_PRIVATE);
+SharedPreferences.Editor editor = sharedPref.edit();
+editor.putString("username",p_name.getText().toString().trim());
+editor.apply();
+
+Toast.makeText(this,p_name.getText().toString().trim(),Toast.LENGTH_LONG).show();
     }
 
     public void onRadioButtonClicked(View view) {

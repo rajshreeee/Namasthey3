@@ -5,13 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="#E1BEE7"
-    android:textSize="40sp"
-    android:id="@+id/contact_name"
-    />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/messagesList"
+        android:layout_width="match_parent"
+        android:layout_height="431dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"></android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#E1BEE7"
+        android:textSize="40sp" />
     <EditText
         android:layout_width="200dp"
         android:layout_height="50dp"

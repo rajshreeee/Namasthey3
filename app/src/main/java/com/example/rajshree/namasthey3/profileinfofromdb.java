@@ -2,8 +2,8 @@ package com.example.rajshree.namasthey3;
 
 public class profileinfofromdb {
 
-    String name;//while giving var names, give the exact as in firebase db or it won't run
-    String interests;
+    String name ;//while giving var names, give the exact as in firebase db or it won't run
+    String interests ;
     public String getName() {
         return name;
     }
