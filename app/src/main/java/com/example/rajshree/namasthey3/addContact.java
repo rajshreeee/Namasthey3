@@ -28,8 +28,11 @@ public class addContact extends AppCompatActivity {
     }
 
     public void nextClick(View view){
+        if(phone_no.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Phone number is empty",Toast.LENGTH_LONG).show();
+        }else{
         Intent nextIntent = new Intent(this,contactReview.class);
         nextIntent.putExtra("phonenumber",phone_no.getText().toString());
-        startActivity(nextIntent);
+        startActivity(nextIntent);}
     }
 }

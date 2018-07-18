@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ public class profiletodb extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     EditText p_name;
+    Button save;
 
 
 
@@ -26,9 +30,32 @@ public class profiletodb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiletodb);
         p_name = findViewById(R.id.editText);
+        save = findViewById(R.id.save);
+        p_name.addTextChangedListener(profileWatcher);
     }
 
+    private TextWatcher profileWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if(!p_name.getText().toString().trim().isEmpty()){
+                save.setBackgroundResource(R.drawable.message_text_bg);
+                save.setEnabled(true);
+            }
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
     public void saveClick(View view) {
+        Toast.makeText(getApplicationContext(),"Your information is saved",Toast.LENGTH_LONG).show();
 
         myRef.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("name").setValue(p_name.getText().toString().trim());
         myRef.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("phone_no").setValue(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());

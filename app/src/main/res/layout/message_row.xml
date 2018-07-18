@@ -7,26 +7,16 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/msgprofile"
-        android:layout_width="57dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <TextView
         android:id="@+id/msgtext"
-        android:layout_width="wrap_content"
+        android:layout_width="109dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/msgprofile"
-        android:layout_marginStart="90dp"
-        android:background="@drawable/message_text_bg"
-        android:padding="5dp"
-        android:text="TextView"
-        android:textColor="@android:color/background_light"
-        android:textSize="20sp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:background="@drawable/message_text_bg2"
+        android:textSize="20sp"
+        android:text="here"
+        android:padding="10dp"/>
 </RelativeLayout>

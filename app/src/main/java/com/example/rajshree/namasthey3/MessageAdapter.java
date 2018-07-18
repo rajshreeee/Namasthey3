@@ -1,15 +1,12 @@
 package com.example.rajshree.namasthey3;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,15 +55,18 @@ public class MessageAdapter extends  RecyclerView.Adapter<MessageAdapter.ViewHol
      String from_user = c.getFrom();
 
         if(from_user.equals(userId)){
-holder.messageText.setBackgroundColor(Color.WHITE);
-holder.messageText.setTextColor(Color.BLACK);
+        holder.messageText.setBackgroundResource(R.drawable.message_text_bg2);
+        holder.messageText.setTextColor(Color.BLACK);
 
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+        lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+        holder.messageText.setLayoutParams(lp);
 
         }else{
 
-            holder.messageText.setBackgroundColor(R.drawable.message_text_bg);
-            holder.messageText.setTextColor(Color.WHITE);
+            holder.messageText.setBackgroundResource(R.drawable.message_text_bg);
+            holder.messageText.setTextColor(Color.BLACK);
 
 
         }
@@ -85,14 +85,14 @@ holder.messageText.setTextColor(Color.BLACK);
 
         public ImageView imageView;
 
-
+public RelativeLayout rl;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
            messageText = (TextView) itemView.findViewById(R.id.msgtext);
-
-            imageView = (ImageView) itemView.findViewById(R.id.msgprofile);
+rl = itemView.findViewById(R.id.messagelayout);
+         
 
         }
 

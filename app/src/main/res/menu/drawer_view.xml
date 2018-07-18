@@ -3,15 +3,17 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/view_profile"
-                android:title= "view profile" />
+                android:title= "view profile"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            />
         <item
                 android:id="@+id/add_contact"
-                android:title="Add Contact" />
-        <item
-                android:id="@+id/nav_slideshow"
-                android:title="Bio" />
+                android:title="Add Contact"
+          android:icon="@drawable/ic_person_add_black_24dp"/>
+
         <item
                 android:id="@+id/edit_profile"
-                android:title="edit profile" />
+                android:title="edit profile"
+            android:icon="@drawable/ic_portrait_purple_24dp"/>
     </group>
 </menu>

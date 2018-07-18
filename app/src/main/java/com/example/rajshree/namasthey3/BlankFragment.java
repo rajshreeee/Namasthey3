@@ -91,6 +91,7 @@ mMessageDatabase = FirebaseDatabase.getInstance().getReference().child("messages
             @Override
             protected void onBindViewHolder(@NonNull final BlankFragment.Con2 holder, int position, @NonNull Conversation model) {
              final String list_user_name = getRef(position).getKey();
+              final String username2 = getRef(position).getKey();
              holder.setName(list_user_name);
 
                 Query lastMsgQuery = mMessageDatabase.child(list_user_name).limitToLast(1);
@@ -124,6 +125,14 @@ mMessageDatabase = FirebaseDatabase.getInstance().getReference().child("messages
                     }
                 });
 
+holder.mView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getActivity(), ChatActivity.class);
+        intent.putExtra("contactusername",username2);
+        getActivity().startActivity(intent);
+    }
+});
 
 
             }

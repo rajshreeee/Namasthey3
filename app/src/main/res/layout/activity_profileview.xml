@@ -1,23 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profileview">
 
-    <TextView
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:text="User Information"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvUserInfo"/>
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#9c64a6"
+        app:title="Profile"
+        app:titleTextColor="@android:color/white"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listview"/>
+        android:id="@+id/results_listview"
 
+        android:layout_width="164dp"
+        android:layout_height="132dp"
+        android:layout_alignStart="@+id/imageView3"
+        android:layout_below="@+id/imageView3"
+        android:scrollbars="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarr"
+        tools:layout_editor_absoluteX="0dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="162dp"
+        android:layout_height="148dp"
+        android:layout_below="@+id/toolbarr"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/editFab"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="34dp"
+        android:layout_marginEnd="39dp"
+        android:src="@drawable/ic_portrait_black_24dp"
+        app:backgroundTint="@android:color/holo_blue_light"
+        app:fabSize="normal" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="122dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editFab"
+        android:layout_alignParentEnd="true"
+        android:text="Tap here to edit your profile"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="18sp" />
+
+</RelativeLayout>
