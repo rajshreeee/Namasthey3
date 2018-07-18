@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 
 import android.support.v7.util.AdapterListUpdateCallback;
@@ -50,6 +51,7 @@ public class LstFragment extends Fragment{
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private FloatingActionButton addFab;
 
     DatabaseReference myRef = database.getReference().child("Friends").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
     private FirebaseAuth mAuth;
@@ -62,7 +64,13 @@ public class LstFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.contact_fragment,container,false);
 
-
+        addFab = rootView.findViewById(R.id.addFab);
+        addFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 startActivity(new Intent(getContext(),addContact.class ));
+            }
+        });
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

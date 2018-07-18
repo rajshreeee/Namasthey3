@@ -9,7 +9,7 @@ import android.support.v4.app.ListFragment;
 public class tabsPager extends FragmentStatePagerAdapter{
 
 
-    String[] titles= new String[]{"First","Contact", "Third"};
+    String[] titles= new String[]{"Chats","Contacts", "Emotions"};
 
     public tabsPager(FragmentManager fm) {
         super(fm);

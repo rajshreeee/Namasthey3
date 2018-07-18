@@ -7,24 +7,73 @@
     tools:context=".contactReview">
 
 
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listviewcr"
-
-   />
-
     <Button
         android:id="@+id/done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="132dp"
+        android:background="@drawable/message_text_bg"
+        android:onClick="DoneClick"
+        android:text="Add" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="97dp"
+        android:layout_height="103dp"
+        android:layout_above="@+id/listviewcr"
+        android:layout_alignStart="@+id/done"
+        android:layout_marginBottom="-164dp"
+        app:srcCompat="@drawable/ic_person_black_24dp" />
+
+    <ListView
+        android:id="@+id/listviewcr"
+        android:layout_width="96dp"
+        android:layout_height="188dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/done"
+        android:layout_marginTop="164dp"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Done"
-        android:onClick="DoneClick"/>
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="-127dp"
+        android:layout_toStartOf="@+id/done"
+        app:srcCompat="@drawable/ic_people" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginBottom="53dp"
+        android:text="Adding people lets you message them instantly."
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#8f5db7" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="17dp" />
 
 
 </RelativeLayout>

@@ -2,15 +2,19 @@ package com.example.rajshree.namasthey3;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     private TextView contact_name;
-    private Button send_message;
+    private FloatingActionButton sendFab;
 private EditText chat_message;
 private RecyclerView mMessagesList;
 private final List<Messages> messagesList = new ArrayList<>();
@@ -49,6 +53,7 @@ private String name;
 private String chatperson;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +61,7 @@ private String chatperson;
 
 
         contact_name = findViewById(R.id.contact_name);
-        send_message = findViewById(R.id.send_message);
+      sendFab = findViewById(R.id.sendFab);
         chat_message = findViewById(R.id.chat_message);
         mMessagesList = findViewById(R.id.messagesList);
         mlinearlayout = new LinearLayoutManager(this);
@@ -74,6 +79,30 @@ mAdapter = new MessageAdapter(messagesList);
         FirebaseUser user = mAuth.getCurrentUser();
         userId = user.getUid();
 loadMessages();
+
+
+
+
+
+        TextWatcher messageTextWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String chatInput = chat_message.getText().toString().trim();
+                if(!chatInput.isEmpty()){
+                sendFab.setEnabled(true);}
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        chat_message.addTextChangedListener(messageTextWatcher);
         myRef.child("chat").child(name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,13 +130,24 @@ loadMessages();
             }
         });
 
-      send_message.setOnClickListener(new View.OnClickListener() {
+
+        sendFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(chat_message.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Type in a messsage",Toast.LENGTH_LONG).show();
+                }
+                sendmessage();
+            }
+        });
+    /*  send_message.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               sendmessage();
           }
-      });
-    }
+      });*/    }
+
+
 
     private void loadMessages() {
 

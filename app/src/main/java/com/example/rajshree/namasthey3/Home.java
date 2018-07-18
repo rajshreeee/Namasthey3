@@ -14,9 +14,17 @@ import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import android.widget.SearchView;
+
+
+
 public class Home extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+      private com.google.firebase.auth.FirebaseAuth mAuth;
+    private String userID;
+
+    public com.miguelcatalan.materialsearchview.MaterialSearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,7 @@ TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
 tabsPager tabsPager = new tabsPager(getSupportFragmentManager());
 viewPager.setAdapter(tabsPager);
 tabLayout.setupWithViewPager(viewPager);
-
+            searchView = findViewById(R.id.search_view);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -102,6 +110,41 @@ tabLayout.setupWithViewPager(viewPager);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+
+
+
+    }
+
+     @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        android.view.MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        android.widget.SearchView searchView = (SearchView)item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+ android.widget.Toast.makeText(getApplicationContext(), query, android.widget.Toast.LENGTH_LONG).show();
+            Intent ep1 = new Intent(getApplicationContext(),seacrh.class);
+              ep1.putExtra("search_value", query.toString());
+               startActivity(ep1);
+                return true;
+
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+
+                return true;
+
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 }
 

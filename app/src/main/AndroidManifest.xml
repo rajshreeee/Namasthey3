@@ -23,7 +23,7 @@
         <activity android:name=".profileview" />
         <activity android:name=".addContact" />
         <activity android:name=".contactReview" />
-
+        <activity android:name=".seacrh"></activity>
         <activity android:name=".ChatActivity"></activity>
     </application>
 
